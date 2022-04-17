@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service
+  datasource:
+    url: jdbc:mysql:///hm49
+    username: root
+    password: root
+  rabbitmq:
+    host: 192.168.32.129
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      exchange: LEYOU.ITEM.EXCHANGE
+    publisher-confirms: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 5秒钟发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
+mybatis:
+  type-aliases-package: com.leyou.item.pojo
